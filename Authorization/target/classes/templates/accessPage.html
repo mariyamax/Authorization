@@ -18,7 +18,15 @@ const element = document.getElementById("password");
 console.log('func');
 $.get('/getPassword', function(data){
     element.setAttribute('value',data);
+    console.log(data);
 });
+}
+
+setTimeout(blockForMinut, 20);
+
+function blockForMinut() {
+const logn = document.getElementById("logbtn");
+logn.hide();
 }
 
 </script>
@@ -31,9 +39,7 @@ $.get('/getPassword', function(data){
             <div th:if="${registration}">
                 <form th:action="@{/registration}" method="post" th:object="${user}" style="max-width: 500px;">
                     <div th:if="${error}" class="alert alert-danger row mb-2" role="alert">
-                        Can not register such user.
-                        <br>
-                        Your name may not be unique
+                        <div th:text="${error}"></div>
                     </div>
                     <div class="row mb-2">
                         <input type="text" th:field="*{username}" placeholder="username" class="form-control"><br>
@@ -45,7 +51,9 @@ $.get('/getPassword', function(data){
                         <input type="submit" class="btn btn-danger btn-xs btn-block" value="REGISTER"/>
                     </div>
                 </form>
-                <button onclick="generatePassword()"></button>
+                <div class="row mb-2" style="max-width: 500px; height: 200px;">
+                <button class="btn btn-danger btn-xs btn-block" value="GEN PASS" onclick="generatePassword()"></button>
+                </div>
             </div>
             <div th:if="${login}">
                 <form th:action="@{/login}" method="post" th:object="${user}" style="max-width: 500px;">
@@ -61,7 +69,7 @@ $.get('/getPassword', function(data){
                     </div>
 
                     <div class="row mb-2">
-                        <input type="submit" class="btn btn-danger btn-xs btn-block" value="LOGIN"/>
+                        <input type="submit" onclick="blockForMinut()" id="logbtn" class="btn btn-danger btn-xs btn-block" value="LOGIN"/>
                     </div>
                 </form>
             </div>

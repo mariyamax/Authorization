@@ -1,0 +1,5 @@
+{
+  "dataBaseUrl": "jdbc:mysql://localhost:3306/authorization",
+  "dataBaseUser": "root",
+  "dataBasePassword": "Petroca9052"
+}

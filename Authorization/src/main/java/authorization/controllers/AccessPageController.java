@@ -40,7 +40,7 @@ public class AccessPageController {
     @PostMapping("/login")
     public String yourMethod(RedirectAttributes redirectAttributes, User user, Model model) {
         User currentUser = userService.findByUsername(user.getUsername());
-        if (currentUser == null || !user.getPassword().equals(SecurityUtils.decode(currentUser.getPassword()))) {
+        if (currentUser == null || !(user.getPassword().equals(SecurityUtils.decode(currentUser.getPassword())))) {
             redirectAttributes.addAttribute("user", new User());
             redirectAttributes.addAttribute("login", "login");
             redirectAttributes.addAttribute("error", "403");

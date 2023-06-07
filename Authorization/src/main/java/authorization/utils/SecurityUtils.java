@@ -27,7 +27,7 @@ public class SecurityUtils {
     public static String decode(String s) {
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.DECRYPT_MODE,key);
-        byte[] bytesDecoded = cipher.doFinal( Base64.getDecoder().decode(s.getBytes(StandardCharsets.UTF_8)));
+        byte[] bytesDecoded = cipher.doFinal(Base64.getDecoder().decode(s.getBytes(StandardCharsets.UTF_8)));
         return new String(bytesDecoded,StandardCharsets.UTF_8);
     }
 

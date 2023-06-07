@@ -23,7 +23,7 @@ public class MainPageController {
     @GetMapping("/main")
     public String getStartPage(RedirectAttributes redirectAttributes,User user, Model model){
         User currentUser = userService.findByUsername(user.getUsername());
-        if(currentUser==null||!user.getPassword().equals(SecurityUtils.decode(currentUser.getPassword()))) {
+        if(currentUser == null || !(user.getPassword().equals(currentUser.getPassword()))) {
             redirectAttributes.addAttribute("user", new User());
             return "redirect:/login";
         }

@@ -5,9 +5,12 @@ import com.github.javafaker.Faker;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+
 public class PasswordUtils {
 
-    private static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,10}$";
+
+    private static final String PASSWORD_PATTERN = "^([a-z](?=.*[!@#%()-[{}];:',&/*~$^+=<>]).(?=.*[0-9])).{6}$";
     private static final Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
     private static final Faker faker = new Faker();
 
@@ -15,8 +18,8 @@ public class PasswordUtils {
     private static final int MIN_VALUE = 0;
 
     public static String generateRandomString() {
-        String password = faker.crypto().sha256().substring(0,7);
-        password = password.concat(generateRandomDigit().toString()).concat("A");
+        String password = faker.crypto().sha512().substring(0,7).concat("!");
+        password.length();
         if (!symbolVerify(password)) {
             return generateRandomString();
         } else {

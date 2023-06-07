@@ -13,6 +13,7 @@ public class CustomUserRepo {
         try {
             PreparedStatement getByName = DataBaseConnection.connect().prepareStatement("select * from users where user_name like '?'");
             getByName.setString(1, userName);
+            getByName.getResultSet();
         } catch (SQLException | FileNotFoundException e) {
             Logger.error(e.getMessage());
             return new User();
