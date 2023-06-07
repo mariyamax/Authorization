@@ -18,7 +18,6 @@ const element = document.getElementById("password");
 console.log('func');
 $.get('/getPassword', function(data){
     element.setAttribute('value',data);
-    console.log(data);
 });
 }
 

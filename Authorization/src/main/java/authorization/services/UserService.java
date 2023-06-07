@@ -6,7 +6,6 @@ import authorization.utils.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +18,10 @@ public class UserService {
     @Autowired
     private final UserRepo userRepository;
 
-    @Autowired
-    private final SecurityUtils passwordEncoder;
-
 
     public boolean createUser(User user){
         if (userRepository.findByUsername(user.getUsername()) != null) return false;
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(SecurityUtils.encode(user.getPassword()));
         userRepository.save(user);
         return true;
     }
