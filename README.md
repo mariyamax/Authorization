@@ -15,3 +15,11 @@ Cистема аутентификации и авторизации
 Пароль в зашифрованном виде
 
 Есть реализация Логгера
+
+Страница регистрации
+![image](https://github.com/mariyamax/Authorization/assets/89139747/a0d16096-900a-42ed-a184-415ad9cf0d12)
+
+Генерация пароля
+![image](https://github.com/mariyamax/Authorization/assets/89139747/c2ec3c6a-5abe-46cd-98f8-fd930823e766)
+
+
