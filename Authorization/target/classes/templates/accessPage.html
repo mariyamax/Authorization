@@ -2,13 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Title</title>
-    <nav class="navbar navbar-light bg-light" th:if="${login} or ${registration}">
-        <a type="button" class="btn btn-danger" href="/">Back</a>
-    </nav>
+    <title>REGISTRATION</title>
     <script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
     </script>
     <script type="text/javascript"></script>
@@ -21,15 +19,11 @@ $.get('/getPassword', function(data){
     console.log(data);
 });
 }
-
-setTimeout(blockForMinut, 20);
-
-function blockForMinut() {
-const logn = document.getElementById("logbtn");
-logn.hide();
-}
-
 </script>
+    <nav class="navbar navbar-light bg-light d-flex justify-content-between" th:if="${login} or ${registration}">
+        <a type="button" class="btn btn-danger" href="/">BACK</a>
+        <input type="button" class="btn btn-danger btn-xs btn-block" value="GEN PASS" onclick="generatePassword()"/>
+    </nav>
 </head>
 <body>
 <table style="height:100%; position:absolute;" class="top-50 start-50 translate-middle">
@@ -45,18 +39,15 @@ logn.hide();
                         <input type="text" th:field="*{username}" placeholder="username" class="form-control"><br>
                     </div>
                     <div class="row mb-2">
-                        <input id="password" type="password" th:field="*{password}" placeholder="password" class="form-control"><br>
+                            <input id="password" type="password" th:field="*{password}" placeholder="password" class="form-control"/>
                     </div>
                     <div class="row mb-2">
-                        <input type="submit" class="btn btn-danger btn-xs btn-block" value="REGISTER"/>
+                            <input type="submit" class="btn btn-danger btn-xs btn-block" value="REGISTER"/>
                     </div>
                 </form>
-                <div class="row mb-2" style="max-width: 500px; height: 200px;">
-                <button class="btn btn-danger btn-xs btn-block" value="GEN PASS" onclick="generatePassword()"></button>
-                </div>
             </div>
             <div th:if="${login}">
-                <form th:action="@{/login}" method="post" th:object="${user}" style="max-width: 500px;">
+                <form th:action="@{/login}" method="post" th:object="${user}" style="max-width: 7em;">
 
                     <div class="row mb-2">
                         <input type="text" id="form1Example1" class="form-control" th:field="*{username}"
@@ -69,7 +60,7 @@ logn.hide();
                     </div>
 
                     <div class="row mb-2">
-                        <input type="submit" onclick="blockForMinut()" id="logbtn" class="btn btn-danger btn-xs btn-block" value="LOGIN"/>
+                        <input type="submit" id="logbtn" class="btn btn-danger btn-xs btn-block" value="LOGIN"/>
                     </div>
                 </form>
             </div>
